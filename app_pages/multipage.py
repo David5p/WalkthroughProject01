@@ -1,18 +1,14 @@
-import os
 import streamlit as st
 
-st.write("Current working directory:", os.getcwd())
-
-
-# Import pages (RELATIVE imports because this file is inside app_pages/)
-from app_pages.page_summary import summary_page
+# Import pages (sibling imports inside app_pages folder)
+from page_summary import summary_page
 from page_cells_visualizer import page_cells_visualizer_body as cells_visualizer_page
-from app_pages.page_malaria_detector import malaria_detector_page
-from app_pages.page_project_hypothesis import project_hypothesis_page
-from app_pages.page_ml_performance import ml_performance_page
+from page_malaria_detector import page_malaria_detector_body
+from page_project_hypothesis import page_project_hypothesis_body
+from page_ml_performance import page_ml_performance_metrics
 
 
-# Class to generate multiple Streamlit pages using an object-oriented approach
+# Class to generate multiple Streamlit pages
 class MultiPage:
     def __init__(self, app_name) -> None:
         self.pages = []
@@ -45,13 +41,15 @@ class MultiPage:
         page["function"]()
 
 
+# Create app instance
 app = MultiPage("Malaria Detector")
 
+# Add pages
 app.add_page("Quick Project Summary", summary_page)
 app.add_page("Cells Visualizer", cells_visualizer_page)
-app.add_page("Malaria Detection", malaria_detector_page)
-app.add_page("Project Hypothesis", project_hypothesis_page)
-app.add_page("ML Performance Metrics", ml_performance_page)
+app.add_page("Malaria Detection", page_malaria_detector_body)
+app.add_page("Project Hypothesis", page_project_hypothesis_body)
+app.add_page("ML Performance Metrics", page_ml_performance_metrics)
 
+# Run the app
 app.run()
-

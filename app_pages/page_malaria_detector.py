@@ -1,3 +1,9 @@
+import sys
+import os
+
+# Add the project root folder to sys.path so Python can find src/
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+
 import streamlit as st
 from PIL import Image
 import numpy as np
