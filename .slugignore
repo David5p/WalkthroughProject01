@@ -11,6 +11,5 @@ docs/
 data/
 models/
 *.csv
-*.pkl
 *.pt
-*.h5
+*.h5  
