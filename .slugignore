@@ -1,0 +1,16 @@
+venv/
+.env/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.git/
+.gitignore
+tests/
+docs/
+data/
+models/
+*.csv
+*.pkl
+*.pt
+*.h5
