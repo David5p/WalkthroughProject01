@@ -1,26 +1,23 @@
 import streamlit as st
 
+st.set_page_config(
+    page_title="Malaria Detector",
+    page_icon="🖥️",
+    layout="wide"
+)
+
 # Import pages (sibling imports inside app_pages folder)
-from .page_summary import page_summary_body
-from .page_cells_visualizer import page_cells_visualizer_body as cells_visualizer_page
-from .page_malaria_detector import page_malaria_detector_body
-from .page_project_hypothesis import page_project_hypothesis_body
-from .page_ml_performance import page_ml_performance_metrics
-
-
-
+from app_pages.page_summary import page_summary_body
+from app_pages.page_cells_visualizer import page_cells_visualizer_body as cells_visualizer_page
+from app_pages.page_malaria_detector import page_malaria_detector_body
+from app_pages.page_project_hypothesis import page_project_hypothesis_body
+from app_pages.page_ml_performance import page_ml_performance_metrics
 
 # Class to generate multiple Streamlit pages
 class MultiPage:
     def __init__(self, app_name) -> None:
         self.pages = []
         self.app_name = app_name
-
-        st.set_page_config(
-            page_title=self.app_name,
-            page_icon="🖥️",
-            layout="wide"
-        )
 
     def add_page(self, title, func) -> None:
         self.pages.append(
@@ -52,7 +49,6 @@ app.add_page("Cells Visualizer", cells_visualizer_page)
 app.add_page("Malaria Detection", page_malaria_detector_body)
 app.add_page("Project Hypothesis", page_project_hypothesis_body)
 app.add_page("ML Performance Metrics", page_ml_performance_metrics)
-
 
 # Run the app
 app.run()
