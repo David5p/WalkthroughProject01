@@ -1,8 +1,9 @@
 import streamlit as st
 
+# Set page config with no icon
 st.set_page_config(
     page_title="Malaria Detector",
-    page_icon="...",
+    page_icon=None,  # no icon
     layout="wide"
 )
 
@@ -30,23 +31,17 @@ class MultiPage:
     def run(self):
         st.title(self.app_name)
 
-        page_titles = [page["title"] for page in self.pages]
-
-        # Initialize session state for selected page index if not exists
-        if "selected_page" not in st.session_state:
-            st.session_state.selected_page = 0  # default first page
-
-        selected_index = st.sidebar.radio(
+        # Sidebar menu with unique key
+        sidebar_key = f"multipage_sidebar_radio_{id(self)}"
+        page = st.sidebar.radio(
             "Menu",
-            range(len(page_titles)),
-            format_func=lambda i: page_titles[i],
-            index=st.session_state.selected_page,
-            key=f"multipage_sidebar_radio_{id(self)}"
+            self.pages,
+            format_func=lambda page: page["title"],
+            key=sidebar_key
         )
-        st.session_state.selected_page = selected_index
 
         # Call the selected page function
-        self.pages[selected_index]["function"]()
+        page["function"]()
 
 
 # Create app instance
