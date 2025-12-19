@@ -2,7 +2,7 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Malaria Detector",
-    page_icon="🖥️",
+    page_icon="...",
     layout="wide"
 )
 
@@ -30,11 +30,15 @@ class MultiPage:
     def run(self):
         st.title(self.app_name)
 
+        # Unique key per app instance
+        sidebar_key = f"multipage_sidebar_radio_{id(self)}"
+
+        # Sidebar menu
         page = st.sidebar.radio(
             "Menu",
             self.pages,
             format_func=lambda page: page["title"],
-            key=f"multipage_sidebar_radio_{self.app_name}"  # unique per app
+            key=sidebar_key
         )
 
         # Call the selected page function
