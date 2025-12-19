@@ -1,5 +1,4 @@
 import streamlit as st
-
 # ------------------------
 # Page configuration
 # ------------------------
@@ -8,6 +7,12 @@ st.set_page_config(
     page_icon=None,  # No icon
     layout="wide"
 )
+import os
+st.write("Current working directory:", os.getcwd())
+st.write("Files in outputs/v1:", os.listdir("outputs/v1"))
+
+
+
 
 # ------------------------
 # Import pages
