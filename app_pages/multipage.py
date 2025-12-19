@@ -1,11 +1,12 @@
 import streamlit as st
 
 # Import pages (sibling imports inside app_pages folder)
-from page_summary import summary_page
-from page_cells_visualizer import page_cells_visualizer_body as cells_visualizer_page
-from page_malaria_detector import page_malaria_detector_body
-from page_project_hypothesis import page_project_hypothesis_body
-from page_ml_performance import page_ml_performance_metrics
+from .page_summary import summary_page
+from .page_cells_visualizer import page_cells_visualizer_body as cells_visualizer_page
+from .page_malaria_detector import page_malaria_detector_body
+from .page_project_hypothesis import page_project_hypothesis_body
+from .page_ml_performance import page_ml_performance_metrics
+
 
 
 # Class to generate multiple Streamlit pages
