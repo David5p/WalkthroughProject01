@@ -31,10 +31,12 @@ class MultiPage:
         st.title(self.app_name)
 
         page = st.sidebar.radio(
-            "Menu",
-            self.pages,
-            format_func=lambda page: page["title"]
-        )
+    "Menu",
+    self.pages,
+    format_func=lambda page: page["title"],
+    key="multipage_sidebar_radio"  # add a unique key
+)
+
 
         # Call the selected page function
         page["function"]()
