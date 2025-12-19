@@ -30,19 +30,23 @@ class MultiPage:
     def run(self):
         st.title(self.app_name)
 
-        # Unique key per app instance
-        sidebar_key = f"multipage_sidebar_radio_{id(self)}"
+        page_titles = [page["title"] for page in self.pages]
 
-        # Sidebar menu
-        page = st.sidebar.radio(
+        # Initialize session state for selected page index if not exists
+        if "selected_page" not in st.session_state:
+            st.session_state.selected_page = 0  # default first page
+
+        selected_index = st.sidebar.radio(
             "Menu",
-            self.pages,
-            format_func=lambda page: page["title"],
-            key=sidebar_key
+            range(len(page_titles)),
+            format_func=lambda i: page_titles[i],
+            index=st.session_state.selected_page,
+            key=f"multipage_sidebar_radio_{id(self)}"
         )
+        st.session_state.selected_page = selected_index
 
         # Call the selected page function
-        page["function"]()
+        self.pages[selected_index]["function"]()
 
 
 # Create app instance
