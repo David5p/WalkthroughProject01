@@ -2,7 +2,7 @@ import streamlit as st
 import matplotlib.pyplot as plt
 
 
-def summary_page():
+def page_summary_body():
 
     st.write("### Quick Project Summary")
 
